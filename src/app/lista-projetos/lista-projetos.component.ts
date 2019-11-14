@@ -10,13 +10,13 @@ import { Projeto } from '../model/projeto';
 })
 export class ListaProjetosComponent implements OnInit {
 
-projeto : 
-Projeto[];
+projetos : Projeto[];
+
   constructor(private router: Router, private service  : ProjetoAPIService ) { }
 
   ngOnInit() {
     this.service.getProjetos()
-               .subscribe ((dados : Projeto []) => this.projeto = dados, error => console.log(error));
+               .subscribe ((dados : Projeto []) => this.projetos = dados, error => console.log(error));
   }
 detalhes(id: number) {
   this.router.navigate(['detalhe-projeto',id]);

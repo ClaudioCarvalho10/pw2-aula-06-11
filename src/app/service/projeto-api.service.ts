@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { throwError, Observable } from 'rxjs';
 import { Projeto } from '../model/projeto';
+
 import {retry, catchError} from 'rxjs/operators';
+
 
 
 @Injectable({
@@ -27,9 +29,9 @@ apiURL: string = "/proxy/Projetos";
    } 
    getProjetos(): Observable <Projeto[]> {
      
-      return this.httpClient.get<Projeto[]>(this.apiURL + "Projetos" )
-                                                        .pipe(retry(1),
-                                                        catchError(this.handleError))
+      return this.httpClient.get<Projeto[]>(this.apiURL  )
+       .pipe(retry(1),
+         catchError(this.handleError))
 
 
    }
